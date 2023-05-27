@@ -80,14 +80,16 @@ const bindState = async (doc) => {
   Y.applyUpdate(doc, Y.encodeStateAsUpdate(dbYDoc))
 
   const redisUpdates = await getDocUpdatesFromQueue(doc)
-  const redisYDoc = new Y.Doc()
-  redisYDoc.transact(() => {
-    for (const u of redisUpdates) {
-      Y.applyUpdate(redisYDoc, u)
-    }
-  })
+  if (redisUpdates.length > 0) {
+    const redisYDoc = new Y.Doc()
+    redisYDoc.transact(() => {
+      for (const u of redisUpdates) {
+        Y.applyUpdate(redisYDoc, u)
+      }
+    })
 
-  Y.applyUpdate(doc, Y.encodeStateAsUpdate(redisYDoc))
+    Y.applyUpdate(doc, Y.encodeStateAsUpdate(redisYDoc))
+  }
 }
 
 const getYDoc = (docname, gc = true) => {

@@ -4,7 +4,7 @@ const Redis = require('ioredis')
 const redis = new Redis(config.redis)
 
 const getDocUpdatesKey = (doc) => {
-  `doc:${doc.name}:updates`
+  return `doc:${doc.name}:updates`
 }
 
 const getDocUpdatesFromQueue = async (doc) => {
