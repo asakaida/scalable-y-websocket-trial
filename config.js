@@ -1,21 +1,21 @@
 const config = {
   httpServer: {
     host: 'localhost',
-    port: 9000
+    port: process.env.PORT ?? 9000
   },
   redis: {
-    host: 'localhost',
-    port: 6379
+    host: process.env.REDIS_HOST ?? 'localhost',
+    port: process.env.REDIS_PORT ?? 6379
   },
   postgres: {
     development: {
       client: 'postgresql',
       connection: {
-        host: 'localhost',
-        port: 15432,
-        database: 'app',
-        user:     'postgres',
-        password: ''
+        host: process.env.POSTGRES_HOST ?? 'localhost',
+        port: process.env.POSTGRES_PORT ?? 15432,
+        database: process.env.POSTGRES_DATABASE ?? 'app',
+        user:     process.env.POSTGRES_USER ?? 'postgres',
+        password: process.env.POSTGRES_PASSWORD ?? ''
       },
       pool: {
         min: 2,
