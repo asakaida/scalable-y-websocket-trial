@@ -19,6 +19,8 @@ httpServer.on('upgrade', (req, socket, head) => {
   })
 })
 
+app.get('/healthcheck', (req, res) => res.send('ok: asakaida/scalable-y-websocket-trial'));
+
 const run = async () => {
   await new Promise(resolve => {
     httpServer.listen(config.httpServer.port, config.httpServer.host, () => {
