@@ -48,4 +48,6 @@ const run = async () => {
 run()
   .then(() => {
     console.log(`HTTP server started at ${config.httpServer.host}:${config.httpServer.port}`)
+  }).catch((e) => {
+    console.log(`HTTP server failed: ${e}`)
   })
