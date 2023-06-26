@@ -4,6 +4,7 @@ const config = {
     port: process.env.PORT ?? 9000
   },
   redis: {
+    protocol: process.env.REDIS_PROTOCOL ?? 'redis',
     host: process.env.REDIS_HOST ?? 'localhost',
     port: process.env.REDIS_PORT ?? 6379
   },
