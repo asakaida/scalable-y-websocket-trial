@@ -1,7 +1,8 @@
 const config = require('./config')
 const Redis = require('ioredis')
 
-const redis = new Redis(config.redis)
+// const redis = new Redis(config.redis)
+const redis = new Redis(`${config.redis.protocol}://${config.redis.host}:${config.redis.port}`);
 
 const getDocUpdatesKey = (doc) => {
   return `doc:${doc.name}:updates`
