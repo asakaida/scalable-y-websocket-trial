@@ -1,6 +1,6 @@
 FROM node:slim
 
-ENV HOST localhost
+ENV HOST 0.0.0.0
 ENV PORT 9000
 ENV REDIS_PROTOCOL redis
 ENV REDIS_HOST localhost
